@@ -24,13 +24,14 @@ void loop()
     String row = "";
     for(int i = 0; i < 5; i++)
     {
-      row = row + sensorValues[i] + ",";
+      row = row + sensorValues[i] + ","; //creating a comma separated file
     }
     row = row + sensorValues[5] + "\n";
     char writeData[row.length()];
-    row.toCharArray(writeData, row.length());
+    row.toCharArray(writeData, row.length()); //conversion to char array
     data.write(writeData);
     data.close();
   }
+  delay(100); //wait 100ms
     
 }
