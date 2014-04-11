@@ -2,7 +2,7 @@
 
 //Audrino code to read in the six sensors
 //Reads data every 100ms
-int sensorValues[2];
+float sensorValues[4];
 void setup()
 {
   //start Serial
@@ -15,6 +15,8 @@ void loop()
 
   sensorValues[0] = analogRead(A2);
   sensorValues[1] = analogRead(A3);
+  sensorValues[2] = analogRead(A4);
+  sensorValues[3] = analogRead(A5);
   
   /*
   if(SD.begin()){ //Writing data to the SD card
@@ -32,7 +34,11 @@ void loop()
   }*/
   Serial.print(sensorValues[0]);
   Serial.print(" | ");
-  Serial.println(sensorValues[1]);
+  Serial.print(sensorValues[1]);
+  Serial.print(" | ");
+  Serial.print(sensorValues[2]);
+  Serial.print(" | ");
+  Serial.println(sensorValues[3]);
   delay(1000); //wait 100ms
     
 }
