@@ -3,9 +3,15 @@ import numpy as np
 import math
 from time import sleep
 from collections import deque
+import matplotlib as mpl
 from matplotlib import pyplot as plt
  
 # class that holds analog data for N samples
+
+mpl.rcParams['toolbar'] = 'None'
+x_range = np.arange(0,5000,50)
+
+
 class AnalogData:
   # constr
   def __init__(self, maxLen):
@@ -37,13 +43,14 @@ class AnalogPlot:
   def __init__(self, analogData):
     # set plot to animated
     plt.ion() 
-    self.awline, = plt.plot(analogData.aw)
-    self.axline, = plt.plot(analogData.ax)
-    self.ayline, = plt.plot(analogData.ay)
-    self.azline, = plt.plot(analogData.az)
+    self.awline, = plt.plot(x_range, analogData.aw)
+    self.axline, = plt.plot(x_range, analogData.ax)
+    self.ayline, = plt.plot(x_range, analogData.ay)
+    self.azline, = plt.plot(x_range, analogData.az)
 
     plt.title("Force on the backpack straps")
     plt.ylabel("Pounds")
+    plt.xlabel("milliseconds")
     plt.legend([self.axline, self.ayline, self.azline, self.awline], ["A2", "A3", "A4", "A5"])
     plt.ylim([0, 7])
  
@@ -80,8 +87,8 @@ def main():
       if(len(data) == 4):
         analogData.add(data)
         analogPlot.update(analogData)
+
 	
-      sleep(50)
     except (KeyboardInterrupt, SystemExit, NameError):
       print 'exiting'
       break

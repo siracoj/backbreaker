@@ -12,10 +12,10 @@ void loop()
 {
   //reading in sensor data from 4 analog sensors
 
-  sensorValues[0] = analogRead(A2) * voltConvert;
-  sensorValues[1] = analogRead(A3) * voltConvert;
-  sensorValues[2] = analogRead(A4) * voltConvert;
-  sensorValues[3] = analogRead(A5) * voltConvert;
+  sensorValues[0] = 5 - (analogRead(A2) * voltConvert);
+  sensorValues[1] = 5 - (analogRead(A3) * voltConvert);
+  sensorValues[2] = 5 - (analogRead(A4) * voltConvert);
+  sensorValues[3] = 5 - (analogRead(A5) * voltConvert);
  
  /* 
   if(!SD.begin(2)){ //Writing data to the SD card
